@@ -1,5 +1,16 @@
-const App = () => {
-  return <div className="bg-black p-4 pt-6">App</div>;
-};
+import API_Testing from "./components/API_Testing"
+import MoviesContainer from "./components/MoviesContainer"
+import SearchBar from "./components/SearchBar"
 
-export default App;
+const App = () => {
+  
+  return (
+    <div>
+      <SearchBar/>
+      <MoviesContainer/>
+      <API_Testing/>
+    </div>
+  )
+}
+
+export default App
