@@ -1,16 +1,15 @@
-import API_Testing from "./components/API_Testing"
-import MoviesContainer from "./components/MoviesContainer"
-import SearchBar from "./components/SearchBar"
+import { useState } from "react";
+import MoviesContainer from "./components/MoviesContainer";
+import SearchBar from "./components/SearchBar";
 
 const App = () => {
-  
+  const [query, setQuery] = useState("");
   return (
     <div>
-      <SearchBar/>
-      <MoviesContainer/>
-      <API_Testing/>
+      <SearchBar onSearch={setQuery} />
+      <MoviesContainer />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

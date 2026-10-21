@@ -1,24 +1,33 @@
 import { useState } from "react";
 
-const SearchBar = () => {
+const SearchBar = ({ onSearch }) => {
   const [text, setText] = useState("");
-  const handleSubmission = (e) => {
+
+  function handleSubmission(e) {
     e.preventDefault();
-  };
+    const cleanText = text.trim();
+    if (!cleanText) return;
+    onSearch(cleanText);
+  }
+
   return (
-    <form action="">
+    <form
+      onSubmit={handleSubmission}
+      className="flex items-center justify-center gap-6 py-20"
+    >
       <input
-        type="text"
+        value={text}
+        type="search"
         onChange={(e) => {
           setText(e.target.value);
         }}
+        placeholder="Enter Movie Name"
+        className="rounded-md px-4 py-2 shadow-md ring ring-neutral-400"
+        aria-label="search movies"
       />
       <button
+        className="cursor-pointer rounded-md bg-neutral-500 px-4 py-2 text-white shadow-md"
         type="submit"
-        onClick={() => {
-          handleSubmission();
-          console.log(text);
-        }}
       >
         Search
       </button>
