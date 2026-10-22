@@ -1,9 +1,12 @@
-const MovieCard = ({ posterPath, title, release_date, voting_average }) => {
+const MovieCard = ({ poster_path, title, release_date, vote_average, idx }) => {
   return (
-    <div className="w-full max-w-2xs overflow-hidden rounded-md border border-neutral-200 shadow-md">
-      {posterPath ? (
+    <div
+      className="w-full max-w-2xs overflow-hidden rounded-md border border-neutral-200 shadow-md"
+      id={idx}
+    >
+      {poster_path ? (
         <img
-          src={`https://image.tmdb.org/t/p/w500${posterPath}`}
+          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
           alt={title}
           className="aspect-2/3 w-full object-cover"
         />
@@ -25,7 +28,7 @@ const MovieCard = ({ posterPath, title, release_date, voting_average }) => {
           </div>
 
           <div className="leading-4">
-            <p className="text-xl font-medium">{voting_average}</p>
+            <p className="text-xl font-medium">{vote_average}</p>
             <span className="text-sm text-neutral-500">Rating</span>
           </div>
         </div>
