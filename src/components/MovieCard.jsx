@@ -1,8 +1,8 @@
-const MovieCard = ({ poster_path, title, release_date, vote_average, idx }) => {
+const MovieCard = ({ id, poster_path, title, release_date, vote_average }) => {
   return (
     <div
       className="w-full max-w-2xs overflow-hidden rounded-md border border-neutral-200 shadow-md"
-      id={idx}
+      key={id}
     >
       {poster_path ? (
         <img
@@ -28,7 +28,7 @@ const MovieCard = ({ poster_path, title, release_date, vote_average, idx }) => {
           </div>
 
           <div className="leading-4">
-            <p className="text-xl font-medium">{vote_average}</p>
+            <p className="text-xl font-medium">{vote_average.toFixed(1)}</p>
             <span className="text-sm text-neutral-500">Rating</span>
           </div>
         </div>

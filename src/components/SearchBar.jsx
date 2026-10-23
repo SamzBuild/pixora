@@ -7,6 +7,9 @@ const SearchBar = ({ onSearch }) => {
     e.preventDefault();
     const cleanText = text.trim();
     if (!cleanText) return;
+
+
+    
     onSearch(cleanText);
   }
 
