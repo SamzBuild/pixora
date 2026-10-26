@@ -1,8 +1,35 @@
+import { useEffect, useRef, useState } from "react";
+
 const MovieCard = ({ id, poster_path, title, release_date, vote_average }) => {
+  const cardRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1,
+      },
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
   return (
     <div
-      className="w-full max-w-2xs overflow-hidden rounded-md border border-neutral-200 shadow-md"
+      className={`fade-up w-full max-w-2xs overflow-hidden rounded-md border border-neutral-200 shadow-md ${
+        isVisible ? "fade-up-visible" : "fade-up-hidden"
+      }`}
       key={id}
+      ref={cardRef}
     >
       {poster_path ? (
         <img

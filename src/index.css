@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+.fade-up-hidden {
+  opacity: 0;
+  transform: translateY(25px);
+}
+
+.fade-up-visible {
+  animation: fadeUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up-visible {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

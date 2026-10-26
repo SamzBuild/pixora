@@ -26,7 +26,6 @@ const App = () => {
           },
         );
 
-        
         if (!response.ok) throw new Error("Request failed: " + response.status);
 
         const data = await response.json();
@@ -45,9 +44,6 @@ const App = () => {
   return (
     <div>
       <SearchBar onSearch={setQuery} />
-      {/* {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      <p>Movies found: {movies.length}</p> */}
       <MoviesContainer movies={movies} query={query} loading={loading} />
     </div>
   );
